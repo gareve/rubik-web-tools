@@ -1,0 +1,13 @@
+{
+    "name": "gareve/rubik-tools",
+    "description": "Rubik online tools",
+    "keywords": ["rubik"],
+    "license": "MIT",
+	"require" : {
+		"oodle/krumo" : "0.5.0",
+		"facebook/xhp" : "dev-master"
+	},
+	"config" : {
+		"vendor-dir" : "packages"
+	}
+}
