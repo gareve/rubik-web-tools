@@ -4,31 +4,30 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0fa9577e312aac96b415035646973441",
+    "hash": "4263362b3c9f56b87afb089e11e7d1e7",
     "packages": [
         {
-            "name": "facebook/xhp",
+            "name": "hhvm/xhp",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/rdewilde/xhp.git",
-                "reference": "19702d67471bb75932da7f1df9f02b5db895d236"
+                "url": "https://github.com/pvh/xhp.git",
+                "reference": "9cdafcf262d2c420c0d026880352ef94501632dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rdewilde/xhp/zipball/19702d67471bb75932da7f1df9f02b5db895d236",
-                "reference": "19702d67471bb75932da7f1df9f02b5db895d236",
+                "url": "https://api.github.com/repos/pvh/xhp/zipball/9cdafcf262d2c420c0d026880352ef94501632dc",
+                "reference": "9cdafcf262d2c420c0d026880352ef94501632dc",
                 "shasum": ""
             },
             "type": "library",
             "autoload": {
-                "classmap": [
-                    "php-lib/"
+                "files": [
+                    "src/init.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
-            "description": "XHP is a PHP extension which augments the syntax of the language such that XML document fragments become valid PHP expressions.",
-            "time": "2014-05-26 19:45:22"
+            "time": "2014-05-23 09:36:03"
         },
         {
             "name": "oodle/krumo",
@@ -88,7 +87,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "facebook/xhp": 20
+        "hhvm/xhp": 20
     },
     "prefer-stable": false,
     "platform": [],
