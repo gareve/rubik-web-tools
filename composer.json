@@ -5,7 +5,9 @@
     "license": "MIT",
 	"require" : {
 		"oodle/krumo" : "0.5.0",
-		"hhvm/xhp" : "dev-master"
+		"hhvm/xhp" : "dev-master",
+        "mongofill/mongofill": "dev-master",
+        "ext-mongo" : "*"
 	},
 	"config" : {
 		"vendor-dir" : "packages"
