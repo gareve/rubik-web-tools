@@ -1,11 +1,21 @@
-<?hh // decl
+<?hh // partial
 require $_SERVER['DOCUMENT_ROOT'] . '/config_speedcubing_memo.hh';
 
-require APP_ROOT . '/src/classes/RubikTopView.hh';
+require APP_ROOT . '/src/models/RubikTopView.hh';
 
 header("Content-type: image/svg+xml");
 
-function draw_rubik_top(RubikTopView $top): string{    
+function draw_rectangle(int $x, int $y, int $width, int $height, string $color) : string{
+    return "<rect 
+        style='fill:$color;stroke:#000000;stroke-opacity:1;fill-opacity:1'
+        width='$width'
+        height='$height'
+        x='$x'
+        y='$y' 
+    />";
+}
+
+function draw_rubik_top(RubikTopView $top): string{
     $svg = '';
     $square_size = 50;
     $rect_size = 5;
@@ -14,52 +24,29 @@ function draw_rubik_top(RubikTopView $top): string{
         for($j=0;$j<3;$j++){
             $x = $j * $square_size + 10;
             $value = $top->grid[$i][$j];
-            $color = $value ? '#fffc00' : 'lightgray';
 
-            $svg = $svg . "<rect style='fill:$color;stroke:#000000;stroke-opacity:1;fill-opacity:1'
-                       width='$square_size'
-                       height='$square_size'
-                       x='$x'
-                       y='$y' />";
+            $svg = $svg . draw_rectangle($x,$y,$square_size,$square_size,$value ? '#fffc00' : 'lightgray');
         }
     }
-
     for($i=0;$i<6;$i++){        
         $x = ($i % 3) * $square_size + 10;
         $y = $i < 3 ? 0 : $square_size * 3 + 15;
-        $value = $top->vsides[$i];
-        $color = 'gray';
 
-        if($value === FALSE){
-            continue;
+        if($top->vsides[$i] === TRUE){
+            $svg = $svg . draw_rectangle($x,$y,$square_size,$rect_size,'gray');
         }
-        $svg = $svg . "<rect style='fill:$color;stroke:#000000;stroke-opacity:1;fill-opacity:1'
-                       width='$square_size'
-                       height='$rect_size'
-                       x='$x'
-                       y='$y' />";
     }
-
     for($i=0;$i<6;$i++){
         $x = $i < 3 ? 0 : $square_size * 3 + 15;
         $y = ($i % 3)*$square_size + 10;
-        $value = $top->hsides[$i];
-        $color = 'gray';
 
-        if($value === FALSE){
-            continue;
+        if($top->hsides[$i] === TRUE){
+            $svg = $svg . draw_rectangle($x,$y,$rect_size,$square_size,'gray');
         }
-
-        $svg = $svg . "<rect style='fill:$color;stroke:#000000;stroke-opacity:1;fill-opacity:1'
-                       width='$rect_size'
-                       height='$square_size'
-                       x='$x'
-                       y='$y' />";
     }
 
     return $svg;
 }
-
 $top = Vector{
     Vector {true,false,true},
     Vector {false,false,true},
