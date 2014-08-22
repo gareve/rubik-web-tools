@@ -5,7 +5,7 @@ require APP_ROOT . '/src/models/RubikTopView.hh';
 
 header("Content-type: image/svg+xml");
 
-function str_to_vector3(string $str): Vector<bool>{
+function str_to_vector6(string $str): Vector<bool>{
     $vc = Vector{};
     for($i=0;$i < strlen($str);$i++){
         $ch = $str[$i];
@@ -15,9 +15,9 @@ function str_to_vector3(string $str): Vector<bool>{
 }
 function str_to_matrix3x3(string $str): Matrix<bool>{
     return Vector{
-        str_to_vector3(substr($str,0,3)),
-        str_to_vector3(substr($str,3,3)),
-        str_to_vector3(substr($str,6,3))
+        str_to_vector6(substr($str,0,3)),
+        str_to_vector6(substr($str,3,3)),
+        str_to_vector6(substr($str,6,3))
     };
 }
 
@@ -48,7 +48,7 @@ function draw_rubik_top(RubikTopView $top): string{
         $x = ($i % 3) * $square_size + 10;
         $y = $i < 3 ? 0 : $square_size * 3 + 15;
 
-        if($top->vsides[$i] === TRUE){
+        if($top->hsides[$i] === TRUE){
             $svg = $svg . draw_rectangle($x,$y,$square_size,$rect_size,'gray');
         }
     }
@@ -56,7 +56,7 @@ function draw_rubik_top(RubikTopView $top): string{
         $x = $i < 3 ? 0 : $square_size * 3 + 15;
         $y = ($i % 3)*$square_size + 10;
 
-        if($top->hsides[$i] === TRUE){
+        if($top->vsides[$i] === TRUE){
             $svg = $svg . draw_rectangle($x,$y,$rect_size,$square_size,'gray');
         }
     }
@@ -84,8 +84,8 @@ if(is_null($r_hsides) || strlen($r_hsides) != 6 || substr_count($r_hsides,'0') +
 }
 
 $top = str_to_matrix3x3($r_grid);
-$vsides = str_to_vector3($_REQUEST['vsides']);
-$hsides = str_to_vector3($_REQUEST['hsides']);
+$vsides = str_to_vector6($_REQUEST['vsides']);
+$hsides = str_to_vector6($_REQUEST['hsides']);
 
 echo '<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <g>';

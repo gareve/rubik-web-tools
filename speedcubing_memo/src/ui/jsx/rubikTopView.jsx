@@ -1,10 +1,5 @@
 /** @jsx React.DOM */
 // The above declaration must remain intact at the top of the script.
-var data = {
-  "state_1":{"answer":"LRDE","grid":"010101010","hsides":"010101","vsides":"010101"},
-  "state_2":{"answer":"LRDE","grid":"010101010","hsides":"010101","vsides":"010101"}
-};
-
 var RubikQuizTop = React.createClass({
   render: function() {
     var getRubikParams = 
@@ -22,10 +17,25 @@ var RubikQuizTop = React.createClass({
   }
 });
 var RubikQuizTopList = React.createClass({
+  getInitialState : function(){
+    return {data : {}};
+  },
+  componentDidMount: function(){
+    $.ajax({
+      url: this.props.url,
+      dataType: 'json',
+      success: function(data) {
+        this.setState({data: data});
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  },
   render: function() {
     var rubikList = {};    
-    for(var keyState in this.props.data){
-      var rubikState = this.props.data[keyState];
+    for(var keyState in this.state.data){
+      var rubikState = this.state.data[keyState];
       rubikList['state-' + keyState] = <RubikQuizTop rubikState={rubikState} />;
     }
     return (
@@ -36,6 +46,6 @@ var RubikQuizTopList = React.createClass({
   }
 });
 React.renderComponent(
-  <RubikQuizTopList data={data}/>,
+  <RubikQuizTopList url='../top_view.json' />,
   document.getElementById('content')
 );
