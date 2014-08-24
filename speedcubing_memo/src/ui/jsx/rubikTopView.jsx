@@ -32,7 +32,6 @@ var RubikQuizTop = React.createClass({
       'hsides=' + this.state.rubikState.hsides + '&' +
       'vsides=' + this.state.rubikState.vsides;
 
-    console.log(this.state.rubikState);
     return (
       <div>
         <img src={"../controllers/rubik_top.svg.hh?" + getRubikParams} /> <br />
