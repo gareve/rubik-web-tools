@@ -1,0 +1,44 @@
+<!-- template.html -->
+<html>
+  <head>
+    <title>Hello React</title>
+    <script src="http://fb.me/react-0.11.1.js"></script>
+    <script src="http://fb.me/JSXTransformer-0.11.1.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>
+    <script type="text/jsx" src='./jsx/rubikTopView.jsx'></script>
+  </head>
+  <body>
+    <div id="content">Loading...</div>
+    <input type="text" value="" id="rubikAnswer">
+    <script type="text/jsx">
+/** @jsx React.DOM */
+$.ajax({
+  url: '../top_view.json',
+  dataType: 'json',
+  success: function(rubikTopStates) {    
+    $("#contesnt").html('');
+    var rubikQuizTop = React.renderComponent(
+      <RubikQuizTop/>,
+      document.getElementById('content')
+    );
+
+    rubikQuizTop.loadRandomRubikState(rubikTopStates);
+    rubikAnswerTF = $('#rubikAnswer');
+    rubikAnswerTF.keyup(function(e){
+      if(e.keyCode == 13){//Enter
+        if(rubikQuizTop.isCorrectAnswer(rubikAnswerTF.val())){
+          rubikQuizTop.loadRandomRubikState(rubikTopStates);
+        }else{
+
+        }
+        rubikAnswerTF.val('');
+      }
+    });
+    rubikAnswerTF.focus();
+    
+  }
+});
+    </script>
+  </body>
+</html>

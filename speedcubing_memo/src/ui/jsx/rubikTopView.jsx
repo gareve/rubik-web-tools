@@ -1,17 +1,40 @@
 /** @jsx React.DOM */
 // The above declaration must remain intact at the top of the script.
 var RubikQuizTop = React.createClass({
+  getInitialState : function(){
+    return {randomKeys : []};
+  },
+  loadRandomRubikState:function(rubikTopStates){
+    var randomKeys = this.state.randomKeys;
+    if(randomKeys.length == 0){
+      randomKeys = Object.keys(rubikTopStates);
+
+      do{
+        randomKeys.sort(function(){return .5 - Math.random();});//Not uniformly random
+      }while(randomKeys.length > 1 && randomKeys[0] == this.state.lastKey);
+    }
+    var randomKey = randomKeys.shift();
+    var rubikState = rubikTopStates[randomKey];
+
+    this.setState({rubikState:rubikState,randomKeys:randomKeys,lastKey:randomKey});
+  },
+  isCorrectAnswer:function(clientAnswer){
+    return clientAnswer == this.state.rubikState.answer;
+  },
   render: function() {
+    if(this.state == null || this.state.rubikState == null){
+      return <li></li>;
+    }
     var getRubikParams = 
-      'grid='   + this.props.rubikState.grid   + '&' +
-      'hsides=' + this.props.rubikState.hsides + '&' +
-      'vsides=' + this.props.rubikState.vsides;
+      'grid='   + this.state.rubikState.grid   + '&' +
+      'hsides=' + this.state.rubikState.hsides + '&' +
+      'vsides=' + this.state.rubikState.vsides;
 
     return (
       <li>
-        <h1>{this.props.rubikState.name}</h1>
+        <h1>{this.state.rubikState.name}</h1>
         <img src={"../controllers/rubik_top.svg.hh?" + getRubikParams} /> <br />
-        Answer : <span>{this.props.rubikState.answer}</span>
+        Answer : <span>{this.state.rubikState.answer}</span>
       </li>
     );  
   }
@@ -45,7 +68,3 @@ var RubikQuizTopList = React.createClass({
     );  
   }
 });
-React.renderComponent(
-  <RubikQuizTopList url='../top_view.json' />,
-  document.getElementById('content')
-);
