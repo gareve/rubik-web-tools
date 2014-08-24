@@ -1,4 +1,4 @@
 {
-  "state_1":{"answer":"LRDE","grid":"010101010","hsides":"111111","vsides":"010101"},
-  "state_2":{"answer":"LRDE","grid":"010101010","hsides":"010101","vsides":"111111"}
+  "state_1":{"name":"State1","answer":"LRDE","grid":"010101010","hsides":"111111","vsides":"010101"},
+  "state_2":{"name":"State2","answer":"LRDE","grid":"010101010","hsides":"010101","vsides":"111111"}
 }

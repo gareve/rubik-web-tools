@@ -10,12 +10,13 @@
   </head>
   <body>
     <div id="content">Loading...</div>
-    <input type="text" value="" id="rubikAnswer">
+    <input type="text" value="" id="rubikAnswer">    
     <script type="text/jsx">
 /** @jsx React.DOM */
 $.ajax({
-  url: '../top_view.json',
+  url: '../top_view.json?',
   dataType: 'json',
+  cache: false,
   success: function(rubikTopStates) {    
     $("#contesnt").html('');
     var rubikQuizTop = React.renderComponent(
@@ -29,8 +30,9 @@ $.ajax({
       if(e.keyCode == 13){//Enter
         if(rubikQuizTop.isCorrectAnswer(rubikAnswerTF.val())){
           rubikQuizTop.loadRandomRubikState(rubikTopStates);
+          rubikAnswerTF.attr('style','background-color:MediumSeaGreen ;');
         }else{
-
+          rubikAnswerTF.attr('style','background-color:Salmon;');
         }
         rubikAnswerTF.val('');
       }
