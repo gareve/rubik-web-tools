@@ -16,3 +16,4 @@ TODO
 * Improve answer validator
 * Improve overall webpage
 * Add jsx tools
+* Open feature suggestions
