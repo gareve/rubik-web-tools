@@ -1,9 +1,9 @@
 {
-  "state_1":{"grid":"110111010","hsides":"001100","vsides":"000001","name":"Anti Sune"         ,"answer":"R'U'RU'R'U2R"},
-  "state_2":{"grid":"010111110","hsides":"100001","vsides":"000100","name":"Sune"	           ,"answer":"RUR'URU2R'"},
-  "state_3":{"grid":"010111010","hsides":"101101","vsides":"000000","name":"Symmetry Cross"    ,"answer":"F(RUR'U')(RUR'U')(RUR'U')F'"},
-  "state_4":{"grid":"010111010","hsides":"001001","vsides":"101000","name":"Non Symmetry Cross","answer":"RU2'R2'U'R2U'R2'U2R"},
-  "state_5":{"grid":"111111010","hsides":"000101","vsides":"000000","name":"HeadLights"        ,"answer":"R2'DR'U2RD'R'U2R'"},
-  "state_6":{"grid":"011111011","hsides":"100100","vsides":"000000","name":"Chameleon"         ,"answer":"(rUR'U')(r'FRF')"},
-  "state_7":{"grid":"011111110","hsides":"000001","vsides":"100000","name":"Bow Tie"           ,"answer":"F'(rUR'U')(r'FR)"}
+  "2look_1":{"grid":"110111010","hsides":"001100","vsides":"000001","category":"2-look OLL","name":"Anti Sune"         ,"answer":"R'U'RU'R'U2R"},
+  "2look_2":{"grid":"010111110","hsides":"100001","vsides":"000100","category":"2-look OLL","name":"Sune"	           ,"answer":"RUR'URU2R'"},
+  "2look_3":{"grid":"010111010","hsides":"101101","vsides":"000000","category":"2-look OLL","name":"Symmetry Cross"    ,"answer":"F(RUR'U')(RUR'U')(RUR'U')F'"},
+  "2look_4":{"grid":"010111010","hsides":"001001","vsides":"101000","category":"2-look OLL","name":"Non Symmetry Cross","answer":"RU2'R2'U'R2U'R2'U2R"},
+  "2look_5":{"grid":"111111010","hsides":"000101","vsides":"000000","category":"2-look OLL","name":"HeadLights"        ,"answer":"R2'DR'U2RD'R'U2R'"},
+  "2look_6":{"grid":"011111011","hsides":"100100","vsides":"000000","category":"2-look OLL","name":"Chameleon"         ,"answer":"(rUR'U')(r'FRF')"},
+  "2look_7":{"grid":"011111110","hsides":"000001","vsides":"100000","category":"2-look OLL","name":"Bow Tie"           ,"answer":"F'(rUR'U')(r'FR)"}
 }
